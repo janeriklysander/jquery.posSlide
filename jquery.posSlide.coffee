@@ -57,16 +57,16 @@ $.fn.posSlide = (position = 'top', options) ->
     css = []
 
     # Function to set opened and closed positions depending on orientation
-    setPositions = (orientation) =>
+    setPositions = (orientation) ->
         switch orientation
             when 'top', 'bottom'
-                if !settings.closePosition
+                if !settings.closedPosition
                     settings.closedPosition = 0 - parseInt(self.outerHeight())
                 if !settings.openPosition
                     settings.openPosition = 0
 
             when 'left', 'right'
-                if !settings.closePosition
+                if !settings.closedPosition
                     settings.closedPosition = 0 - parseInt(self.outerWidth())
                 if !settings.openPosition
                     settings.openPosition = 0
@@ -75,7 +75,6 @@ $.fn.posSlide = (position = 'top', options) ->
     open = (position) ->
         css[position] = settings.openPosition
         # Run animation
-        console.log animationOptions
         self.animate css, animationOptions
 
     # Close
